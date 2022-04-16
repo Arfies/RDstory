@@ -1,0 +1,411 @@
+@import url('https://fonts.loli.net/css?family=Open+Sans:300,700|Quattrocento:700');
+
+/* THEME START */
+body {
+    font-family: 'Open Sans', sans-serif;
+    background: white;
+    overflow: hidden;
+    height: 100vh;
+}
+
+body.switched {
+    transition: color 0.6s, background-color 0.6s;
+}
+
+h1,
+h2 {
+    text-align: center;
+    font-family: "Quattrocento", Georgia, 'Times New Roman', Times, serif;
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-size: 30pt;
+    margin-bottom: 10px;
+}
+
+h2 {
+    font-size: 14pt;
+    font-style: italic;
+    font-family: sans-serif;
+    color: #BBB;
+}
+
+.header {
+    padding-top: 3em;
+    padding-bottom: 3em;
+}
+
+/*
+  Built-in class:
+    # author: Name
+*/
+.byline {
+    font-style: italic;
+}
+
+.written-in-ink {
+    z-index: 3;
+    font-size: 9pt;
+    font-family: sans-serif;
+    text-align: center;
+    font-weight: 700;
+    position: fixed;
+    display: block;
+    width: 100%;
+    background: white;
+    transition: color 0.6s, background 0.6s;
+    margin: 0;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    height: 14px;
+    top: 0;
+}
+
+/*
+  Enables <iframe> support work on itch.io when using mobile iOS
+*/
+.outerContainer {
+    position: absolute;
+    display: block;
+    padding: 0;
+    -webkit-overflow-scrolling: touch;
+    overflow: scroll;
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    top: 0;
+    left: 0;
+    margin: 24px 0 0;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 980px) {
+    .outerContainer {
+        margin-top: 44px;
+        background-size: cover;
+        background-repeat: no-repeat;
+    }
+}
+
+.container {
+    display: block;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 4em 20px 20px;
+    background: white;
+}
+
+.switched .container {
+    transition: background-color 0.6s;
+}
+
+p {
+    font-size: 13pt;
+    color: #888;
+    line-height: 1.7em;
+    display: block;
+}
+
+span {
+    font-size: 13pt;
+    color: #888;
+    line-height: 1.7em;
+    display: inline-block;
+}
+
+a {
+    font-weight: 700;
+    color: #b97c2c;
+    font-family: sans-serif;
+    transition: color 0.6s;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    transition: color 0.1s;
+}
+
+strong {
+    color: black;
+    font-weight: bold;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+.container .hide {
+    opacity: 0.0;
+}
+
+.container .invisible {
+    display: none;
+}
+
+.container > * {
+    opacity: 1.0;
+    transition: opacity 1.0s;
+}
+
+/*
+  Class applied to all choices
+  (Will always appear inside <p> element by default.)
+*/
+.choice {
+    text-align: center;
+    line-height: 1.7em;
+}
+
+/*
+  Class applied to first choice
+*/
+:not(.choice) + .choice {
+    padding-top: 1em;
+}
+
+/*
+  Class applied to choice links
+*/
+.choice a {
+    font-size: 15pt;
+}
+
+/*
+  Built-in class:
+    The End # CLASS: end
+*/
+.end {
+    text-align: center;
+    font-weight: bold;
+    color: black;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#controls {
+    z-index: 4;
+    font-size: 9pt;
+    text-align: center;
+    padding-bottom: 6px;
+    position: fixed;
+    right: 14px;
+    top: 4px;
+    user-select: none;
+    background: white;
+    transition: color 0.6s, background 0.6s;
+}
+
+#controls [disabled] {
+    color: #ccc;
+}
+
+#controls > *:not(:last-child):after {
+    content: " | ";
+}
+
+@media screen and (max-width: 980px) {
+    #controls {
+        z-index: 2;
+        padding-top: 24px;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+}
+
+.reader-input {
+    width: 100%;
+}
+
+.reader-input > input {
+    width: calc(100% - 160px);
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: #888;
+    border-bottom: #888 solid 2px;
+    margin-left: 30px;
+    margin-right: 30px;
+    font-size: 13pt;
+}
+
+.reader-input > input[type="number"]::-webkit-inner-spin-button,
+.reader-input > input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+
+.reader-input > input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+.reader-input > input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #BDBDBD;
+    opacity: 1; /* Firefox */
+}
+
+.reader-input > input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #BDBDBD;
+}
+
+.reader-input > input::-ms-input-placeholder { /* Microsoft Edge */
+    color: #BDBDBD;
+}
+
+.reader-input > button {
+    background: none;
+    color: #888;
+    border: #888 solid 2px;
+    padding: 1px 20px;
+    font-size: 12pt;
+    cursor: pointer;
+}
+
+.reader-input > button[disabled] {
+    cursor: not-allowed;
+}
+
+.reader-input > span {
+    margin-left: 30px;
+    color: #b97c2c;
+}
+
+/*
+  Dark Theme (Added in Inky 0.10.0)
+    # theme: dark
+*/
+
+body.dark {
+    background: black;
+    color: white;
+}
+
+.dark h2 {
+    color: #666;
+}
+
+.dark .container {
+    background: black;
+}
+
+.dark .written-in-ink {
+    background: black;
+}
+
+.dark a {
+    color: #cc8f1a;
+    transition: color 0.6s;
+}
+
+.dark a:hover {
+    color: white;
+}
+
+.dark strong {
+    color: white;
+}
+
+.dark #controls [disabled] {
+    color: #444;
+}
+
+.dark .end {
+    color: white;
+}
+
+.dark #controls {
+    background: black;
+}
+
+.dark .reader-input > input {
+    color: #666;
+    border-bottom: #666 solid 1px;
+}
+
+.dark .reader-input > button {
+    color: #666;
+    border: #666 solid 1px;
+}
+
+.dark .reader-input > span {
+    color: #cc8f1a;
+}
+
+.dark .reader-input > input::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #424242;
+    opacity: 1; /* Firefox */
+}
+
+.dark .reader-input > input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #424242;
+}
+
+.dark .reader-input > input::-ms-input-placeholder { /* Microsoft Edge */
+    color: #424242;
+}
+
+
+/* THEME END */
+
+/* FUNCTIONAL ELEMENT*/
+#debug-window {
+    border: gray solid 1px;
+    background: linear-gradient(to right, #000000, #007e00);
+    border-radius: 12px 12px 0 0;
+    box-shadow: none;
+}
+
+#debug-window .value-window {
+    font-size: 12pt;
+    color: white;
+    height: 100%;
+    padding: 10px;
+}
+
+#debug-window .wb-title {
+    color: white;
+    font-size: 13px;
+}
+
+#debug-window .wb-body {
+    background: black;
+}
+
+#debug-window input,
+#debug-window textarea {
+    background: none;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    color: #888;
+    border-bottom: #888 solid 1px;
+    font-size: 13pt;
+    padding: 3px;
+}
+
+#debug-window .search {
+    width: calc(100% - 60px);
+    margin: 0 30px 20px;
+}
+
+#debug-window .name-column {
+    width: 30%;
+}
+
+#debug-window .value-column {
+    width: 70%;
+}
+
+#debug-window .value-changer {
+    width: 90%;
+    margin-right: 30px;
+}

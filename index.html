@@ -1,0 +1,91 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+
+    <title>RDstory</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./lib/animate.min.css">
+    <link rel="stylesheet" href="./lib/toastify.min.css">
+    <link rel="preload" href="./lib/winbox.bundle.js" as="script">
+    <link rel="preload" href="./lib/toastify-js.min.js" as="script">
+    <script defer src="./lib/alpine.min.js"></script>
+
+</head>
+
+<body>
+    <div class="outerContainer">
+        <h3 class="written-in-ink"><a href="https://www.inklestudios.com/ink">WRITTEN IN INK</a></h3>
+
+        <div id="controls" class="buttons">
+            <a id="rewind" title="重新开始">restart</a>
+            <a id="save" title="保存">save</a>
+            <a id="reload" title="读档">load</a>
+            <a id="theme-switch" title="切换主题">theme</a>
+        </div>
+
+        <div id="story" class="container">
+            <div class="header">
+                <h1 id="title">RDstory</h1>
+                <h2 class="byline"></h2>
+            </div>
+        </div>
+    </div>
+
+    <script src="./lib/winbox.bundle.js"></script>
+    <script src="./lib/toastify-js.min.js"></script>
+    <script src="./ink.js"></script>
+    <script src="./RDstory.js"></script>
+
+    <!-- debug window -->
+    <div id="debug-window-prototype">
+        <template x-if="variables.length > 0 || keyword.trim().length > 0">
+            <div class="value-window">
+                <p>🔍 输入变量名搜索变量，多个变量请用英文逗号隔开</p>
+                <input class="search" type="text" x-model="keyword"/>
+                <table>
+                    <thead>
+                        <tr>
+                            <td class="name-column"><span>变量名（点击编辑）</span></td>
+                            <td class="value-column"><span>变量值（Ctrl + Enter 保存）</span></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template x-for="item of variables">
+                            <tr>
+                                <td>
+                                    <span x-text="item.name"
+                                          @click.stop="onVariableSelect(item)">
+                                    </span>
+                                </td>
+                                <td>
+                                    <span x-text="item.value"
+                                          x-show="!item.isSelected"></span>
+                                    <textarea
+                                            x-bind:id="`value-changer-${item.id}`"
+                                            class="value-changer"
+                                            x-model="item.value"
+                                            x-show="item.isSelected">
+                                    </textarea>
+                                </td>
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+            </div>
+        </template>
+        <template x-if="variables.length === 0">
+            <div class="value-window">
+                <span>Waiting for variables...</span>
+            </div>
+        </template>
+    </div>
+
+    <script src="./main.js"></script>
+</body>
+
+</html>
